@@ -22,7 +22,7 @@ table = pd.read_excel("Cotações.xls")
 table.loc[0, "Cotação"] = float(price_dollar)
 table.loc[1, "Cotação"] = float(price_euro)
 table.loc[2, "Cotação"] = float(price_lib)
-table.loc[3, "Cotação"] = float(price_btc) * 1000
+table.loc[3, "Cotação"] = float(price_btc)
 table.loc[0, "Data Última Atualização"] = date_screen
 table = table.ffill()
 
