@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # FIXME: URL API
-request_url = requests.get("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL")
+request_url = requests.get("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL")
 
 # FIXME: Date and Hours
 date_time_now = datetime.now()
@@ -12,10 +12,10 @@ date_save_excel = date_time_now.strftime('%d_%m_%Y_%H:%M')
 
 # FIXME: Collecting data from api
 request_dict = request_url.json()
-price_dollar = request_dict["USDBRL"]["bid"]
-price_euro = request_dict["EURBRL"]["bid"]
-price_btc = request_dict["BTCBRL"]["bid"]
-price_lib = request_dict["GBPBRL"]["bid"]
+price_dollar = request_dict["USD"]["bid"]
+price_euro = request_dict["EUR"]["bid"]
+price_btc = request_dict["BTC"]["bid"]
+price_lib = request_dict["GBP"]["bid"]
 
 # FIXME: Creating the new table
 table = pd.read_excel("Cotações.xls")
