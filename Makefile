@@ -4,7 +4,7 @@ venv:
 
 .PHONY: build
 build:
-	pip install -r requeriments.txt
+	pip install -r requirements.txt
 
 .PHONY: new_price
 new_price:

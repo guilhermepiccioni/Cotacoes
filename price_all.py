@@ -12,18 +12,18 @@ date_save_excel = date_time_now.strftime('%d_%m_%Y_%H:%M')
 
 # FIXME: Collecting data from api
 request_dict = request_url.json()
-price_dollar = request_dict["USD"]["bid"]
-price_euro = request_dict["EUR"]["bid"]
-price_btc = request_dict["BTC"]["bid"]
-price_lib = request_dict["GBP"]["bid"]
+price_dollar = request_dict["USDBRL"]["bid"]
+price_euro = request_dict["EURBRL"]["bid"]
+price_btc = request_dict["BTCBRL"]["bid"]
+price_lib = request_dict["GBPBRL"]["bid"]
 
 # FIXME: Creating the new table
-table = pd.read_excel("Cotações.xls")
-table.loc[0, "Cotação"] = float(price_dollar)
-table.loc[1, "Cotação"] = float(price_euro)
-table.loc[2, "Cotação"] = float(price_lib)
-table.loc[3, "Cotação"] = float(price_btc)
-table.loc[0, "Data Última Atualização"] = date_screen
+table = pd.read_excel("Config_tables.xlsx", sheet_name="General")
+table.loc[0, "Price"] = float(price_dollar)
+table.loc[1, "Price"] = float(price_euro)
+table.loc[2, "Price"] = float(price_lib)
+table.loc[3, "Price"] = float(price_btc)
+table.loc[0, "Last Update Date"] = date_screen
 table = table.ffill()
 
 # FIXME: Save database in Excel with pandas
