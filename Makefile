@@ -6,10 +6,10 @@ venv:
 build:
 	pip install -r requirements.txt
 
-.PHONY: new_price
-new_price:
-	python price_all.py
+.PHONY: trade
+trade:
+	python3 main.py
 
-.PHONY: history_price
-history_price:
+.PHONY: history_trades
+history_trades:
 	cd History_price && python view_all_files.py

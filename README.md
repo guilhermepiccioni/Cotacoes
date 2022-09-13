@@ -18,11 +18,11 @@ Once this is done, run the command that will install the project's dependencies:
 
 To generate a new spreadsheet with updated quotes, simply run the command:
 
-    make new_price
+    make trade
 
 To view the data of all spreadsheets generated in the History_price directory, simply run the command:
     
-    make history_price
+    make history_trades
 
 ----------------------------------------------------------------------------------------------------
 
@@ -46,9 +46,9 @@ Feito isto, execute o comando que ira instalar as dependencias do projeto:
 
 Para gerar uma nova planilha com cotaçoes atualizadas, basta executar o comando:
 
-    make new_price
+    make trade
 
 Para visualizar os dados de todas as planilhas geradas no diretorio History_price, 
 basta executar o comando:
 
-    make history_price
+    make history_trades
