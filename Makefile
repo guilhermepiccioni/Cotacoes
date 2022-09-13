@@ -1,11 +1,35 @@
+DOCKER := docker
+TAG := trade_image
+DOCKER_COMPOSE := docker-compose
+
 .PHONY: venv
 venv:
 	pip install virtualenv && virtualenv venv
 
 .PHONY: build
 build:
-	pip install -r requirements.txt
+	$(DOCKER) build -t $(TAG) .
 
+.PHONY: integration
+integration: build
+	$(DOCKER_COMPOSE) up -d
+
+.PHONY: run
+run:
+	$(DOCKER_COMPOSE) up
+
+#.PHONY: makemigrations
+#makemigrations:
+#	$(DOCKER_COMPOSE) exec trades python manage.py makemigrations
+#
+#.PHONY: migrate
+#migrate:
+#	$(DOCKER_COMPOSE) exec trades python manage.py migrate
+#
+#.PHONY: superuser
+#superuser:
+#	$(DOCKER_COMPOSE) exec trades python manage.py createsuperuser
+#
 .PHONY: trade
 trade:
 	python3 main.py

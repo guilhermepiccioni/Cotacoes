@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+
+  trades:
+    build: .
+    image: trade_image:latest
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    container_name:
+      trades
+    depends_on:
+      - db_trades
+
+  db_trades:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    container_name:
+      db_trades
+
+volumes:
+  postgres_data:
