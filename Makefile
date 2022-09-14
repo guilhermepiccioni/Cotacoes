@@ -8,16 +8,28 @@ venv:
 
 .PHONY: build
 build:
-	$(DOCKER) build -t $(TAG) .
+	pip install -r requirements.txt
 
-.PHONY: integration
-integration: build
-	$(DOCKER_COMPOSE) up -d
+.PHONY: trade
+trade:
+	python3 main.py
 
-.PHONY: run
-run:
-	$(DOCKER_COMPOSE) up
+.PHONY: history_trades
+history_trades:
+	cd History_price && python view_all_files.py
 
+#.PHONY: build
+#build:
+#	$(DOCKER) build -t $(TAG) .
+#
+#.PHONY: integration
+#integration: build
+#	$(DOCKER_COMPOSE) up -d
+#
+#.PHONY: run
+#run:
+#	$(DOCKER_COMPOSE) up
+#
 #.PHONY: makemigrations
 #makemigrations:
 #	$(DOCKER_COMPOSE) exec trades python manage.py makemigrations
@@ -29,11 +41,3 @@ run:
 #.PHONY: superuser
 #superuser:
 #	$(DOCKER_COMPOSE) exec trades python manage.py createsuperuser
-#
-.PHONY: trade
-trade:
-	python3 main.py
-
-.PHONY: history_trades
-history_trades:
-	cd History_price && python view_all_files.py
