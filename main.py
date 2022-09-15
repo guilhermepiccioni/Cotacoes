@@ -8,7 +8,7 @@ def run():
     try:
         if td:
             print(f"Table Saving: {save_td.save_table()}")
-            print(f"Currency Price. {td.hours_update()}\n")
+            print(f"Currency Price. {td.refactoring_hours()}\n")
             print(td.create_table())
         else:
             print("Not Found")
